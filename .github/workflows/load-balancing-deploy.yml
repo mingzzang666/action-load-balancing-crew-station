@@ -46,7 +46,6 @@ jobs:
           docker rmi crew-station || true
           docker build --build-arg JWT_SECRET=${{ secrets.JWT_SECRET }} \
             --build-arg EC2_HOST=${{ secrets.EC2_HOST }} \
-            --build-arg EC2_DATABASE_HOST=${{ secrets.EC2_DATABASE_HOST }} \
             --build-arg AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} \
             --build-arg AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} \
             --build-arg AWS_S3_BUCKET=${{ secrets.AWS_S3_BUCKET }} \
@@ -58,7 +57,6 @@ jobs:
           -t crew-station .
           docker run -d -p 80:10000 --name crew-station \
             -e EC2_HOST=${{ secrets.EC2_HOST }} \
-            -e EC2_DATABASE_HOST=${{ secrets.EC2_DATABASE_HOST }} \
             -e AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} \
             -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} \
             -e AWS_S3_BUCKET=${{ secrets.AWS_S3_BUCKET }} \
