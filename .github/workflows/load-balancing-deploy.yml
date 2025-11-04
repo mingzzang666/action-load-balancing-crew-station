@@ -52,6 +52,8 @@ jobs:
             --build-arg AWS_REGION=${{ secrets.AWS_REGION }} \
             --build-arg KAKAO_CLIENT_ID=${{ secrets.KAKAO_CLIENT_ID }} \
             --build-arg KAKAO_CLIENT_SECRET=${{ secrets.KAKAO_CLIENT_SECRET }} \
+            --build-arg NAVER_CLIENT_ID=${{ secrets.NAVER_CLIENT_ID }} \
+            --build-arg NAVER_CLIENT_SECRET=${{ secrets.NAVER_CLIENT_SECRET }} \
           -t crew-station .
           docker run -d -p 80:10000 --name crew-station \
             -e EC2_HOST=${{ secrets.EC2_HOST }} \
