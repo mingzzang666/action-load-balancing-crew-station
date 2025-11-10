@@ -19,9 +19,9 @@ const DiaryLayout = (() => {
         diaries.forEach(diary => {
             const diaryHTML = `
                 <div class="diary-wrap">
-                    <div class="diary-div">
-                        <a href="/diaries/detail/${diary.postId}">
-                            <div class="diary-img-wrap">
+                  <a href="/diaries/detail/${diary.postId}">
+                        <div class="diary-div">
+                           <div class="diary-img-wrap">
                                 <img class="diary-img" src="${diary.mainImage || '/images/default-diary.jpg'}">
                                 <div class="date-tag">
                                     <span class="tag-span">${diary.formattedCreatedDatetime}</span>
