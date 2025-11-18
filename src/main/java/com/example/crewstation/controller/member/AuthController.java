@@ -22,6 +22,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -197,7 +198,7 @@ AuthController implements AuthControllerDocs{
     @PostMapping("/reset-cookies")
     public void resetCookies(HttpServletRequest req, HttpServletResponse res){
         Cookie[] cookies = req.getCookies();
-        log.info("Cookies are {}", cookies);
+        log.info("Cookies are {}", Arrays.toString(cookies));
         if (cookies != null) {
             boolean accessTokenExists = false;
             for (Cookie cookie : cookies) {
