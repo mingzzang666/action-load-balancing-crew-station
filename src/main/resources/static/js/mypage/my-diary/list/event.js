@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                 const result = await AiTravelService.recommendDestinations(keyword);
 
-                if (result && result.message) {
+                if (result && result.results) {
                     resultPlace.innerHTML = result.results
                         .map(item => `• ${item.city} (${item.country})`)
                         .join("<br>");
