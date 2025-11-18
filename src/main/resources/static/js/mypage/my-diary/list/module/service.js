@@ -1,10 +1,9 @@
 // ===================== AI 추천 여행지 서비스 =====================
 const AiTravelService = (() => {
 
-    // 여행지 추천 요청
     const recommendDestinations = async (keyword) => {
         try {
-            const response = await fetch(`/api/recommend-destinations`, {
+            const response = await fetch(`http://127.0.0.1:8000/api/recommend-destinations`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ message: keyword })
