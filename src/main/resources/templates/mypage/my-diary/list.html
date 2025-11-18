@@ -32,12 +32,6 @@
                         <div class="drop-down">
                             <a href="/diaries/write" class="share-button-style">
                                 <span class="share-text">다이어리 작성하기</span>
-                                <div class="ai-button-wrapper">
-                                    <button class="galaxy-btn">
-                                        <span class="star-icon">✦</span>
-                                        AI 여행지 추천
-                                    </button>
-                                </div>
                             </a>
                         </div>
                     </div>
@@ -47,6 +41,18 @@
                         <img class="profile-img" src="/static/images/crew-station-icon-profile.png">
                         <span class="profile-name">CREW_STATION</span>
                     </a>
+                </div>
+            </div>
+            <div class="ai-button-wrapper">
+                <button class="galaxy-btn" id="aiButton">✦ AI 여행지 추천</button>
+
+                <div class="ai-input-wrap" id="aiInputWrap">
+                    <input type="text" class="ai-input" id="aiInput" placeholder="">
+                </div>
+
+                <div class="result-box" id="resultBox">
+                    <p class="result-title">당신의 취향을 분석해 고른 여행지는</p>
+                    <p class="result-place" id="resultPlace"></p>
                 </div>
             </div>
             <div class="m-sticky-container">

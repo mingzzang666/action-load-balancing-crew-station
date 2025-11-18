@@ -1,3 +1,29 @@
+// ===================== AI 추천 여행지 서비스 =====================
+const AiTravelService = (() => {
+
+    // 여행지 추천 요청
+    const recommendDestinations = async (keyword) => {
+        try {
+            const response = await fetch(`/api/recommend-destinations`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ message: keyword })
+            });
+
+            if (!response.ok) throw new Error(`Error: ${response.status}`);
+
+            return await response.json();
+        } catch (error) {
+            console.error("recommendDestinations Error:", error);
+            return null;
+        }
+    };
+
+    return {
+        recommendDestinations: recommendDestinations
+    };
+})();
+
 // ===================== Member Service =====================
 const memberProfileService = (() => {
     // 마이페이지 - 로그인된 멤버 프로필 조회

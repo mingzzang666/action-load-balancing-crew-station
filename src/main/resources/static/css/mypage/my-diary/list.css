@@ -16,7 +16,7 @@ body, html {
 }
 
 blockquote, body, code, dd, div, dl, dt, fieldset,
- form, h1, h2, h3, h4, h5, h6, input, legend, li, 
+ form, h1, h2, h3, h4, h5, h6, input, legend, li,
  ol, p, pre, td, textarea, th, ul {
     margin: 0;
     padding: 0;
@@ -26,7 +26,7 @@ button {
     background-color: rgb(247, 249, 250);
 }
 
-[role=button], a, button, input[type=button], 
+[role=button], a, button, input[type=button],
 input[type=reset], input[type=submit] {
     cursor: pointer;
     touch-action: manipulation;
@@ -41,15 +41,15 @@ a {
 @import "https://assets.ohou.se/fonts/pretendard/v1.3.8/pretendardvariable-dynamic-subset.css";
 @font-face{
     font-family:OhouseIcon;src:url(https://assets.ohou.se/design-system/3298ed52addbc709.eot);
-    src:url(https://assets.ohou.se/design-system/3298ed52addbc709.eot#iefix) 
+    src:url(https://assets.ohou.se/design-system/3298ed52addbc709.eot#iefix)
     format("embedded-opentype"),
-    url(https://assets.ohou.se/design-system/d8923b386a66fd50.woff2) 
+    url(https://assets.ohou.se/design-system/d8923b386a66fd50.woff2)
     format("woff2"),
-    url(https://assets.ohou.se/design-system/9e79341d6a2fe0d2.woff) 
+    url(https://assets.ohou.se/design-system/9e79341d6a2fe0d2.woff)
     format("woff"),
-    url(https://assets.ohou.se/design-system/5355f736e6a7bc5b.ttf) 
+    url(https://assets.ohou.se/design-system/5355f736e6a7bc5b.ttf)
     format("truetype"),
-    url(https://assets.ohou.se/design-system/3ba7913eab100858.svg#OhouseIcon) 
+    url(https://assets.ohou.se/design-system/3ba7913eab100858.svg#OhouseIcon)
     format("svg");}
     html{
         font-family:'Pretendard Variable',sans-serif;
@@ -215,7 +215,7 @@ a {
 }
 
 .profile-name {
-    
+
     font-size: 20px;
     line-height: 28px;
     display: block;
@@ -475,7 +475,7 @@ nav {
     font-weight: 700;
     height: 24px;
     line-height: 24px;
-    border-radius: 4px; 
+    border-radius: 4px;
 }
 
 
@@ -713,66 +713,41 @@ nav {
 /*  AI 추천 컨텐츠  */
 /*================================================================================================*/
 
-/* 전체 버튼 박스 */
+/* 버튼 감싸는 박스 (오로라 포함) */
 .ai-button-wrapper {
     position: relative;
-    display: inline-block;
-    margin: 80px;
+    display: block;
+    width: fit-content;
+    margin-left: 20px;
+    margin-right: 0;      /* 오른쪽 여백 */
+    margin-top: 60px;         /* 위 여백 */
 }
 
-/* 🌌 오로라 효과 */
-.ai-button-wrapper::before {
-    content: "";
-    position: absolute;
-    top: -90px;
-    left: 50%;
-    width: 330px;
-    height: 330px;
-
-    background: radial-gradient(circle at 50% 50%,
-    rgba(255, 160, 255, 0.55),
-    rgba(160, 200, 255, 0.40),
-    rgba(120, 150, 255, 0.28),
-    rgba(50, 80, 255, 0)
-    );
-
-    filter: blur(75px);
-    transform: translateX(-50%);
-    border-radius: 50%;
-    animation: auroraFlow 18s infinite ease-in-out alternate;
-}
-
-@keyframes auroraFlow {
-    0% { transform: translateX(-50%) scale(1) rotate(0deg); }
-    50% { transform: translateX(-48%) scale(1.25) rotate(25deg); }
-    100% { transform: translateX(-50%) scale(1) rotate(0deg); }
-}
-
-/* 🟪 버튼 본체 (오렌지 제거) */
+/* ==========================
+      버튼 스타일 (깔끔)
+========================== */
 .galaxy-btn {
     position: relative;
     z-index: 5;
-    padding: 12px 22px;
-    font-size: 18px;
+    padding: 8px 12px;
+    font-size: 14px;
     font-weight: bold;
     color: white;
     border: none;
     border-radius: 40px;
     cursor: pointer;
 
-    /* 🔵🔮 몽환적인 쿨톤 그라데이션 */
     background: linear-gradient(120deg,
-    #fbc2eb,  /* 핑크-보라 */
-    #a18cd1,  /* 라벤더 */
-    #cfd9ff,  /* 은은한 쿨 화이트 */
-    #a1c4fd,  /* 파스텔 블루 */
-    #c2e9fb   /* 아이스 블루 */
+    #c7b7ff,
+    #b8c0ff,
+    #a5b4ff,
+    #8ab8ff
     );
 
-    background-size: 400% 400%;
-    animation: rainbowFlow 10s ease infinite;
+    background-size: 300% 300%;
+    animation: rainbowFlow 8s ease infinite;
 
-    box-shadow: 0 8px 30px rgba(190, 150, 255, 0.7);
+    box-shadow: 0 8px 25px rgba(150, 170, 255, 0.6);
     transition: 0.25s ease;
 }
 
@@ -784,10 +759,146 @@ nav {
 
 .galaxy-btn:hover {
     transform: scale(1.12);
-    box-shadow: 0 18px 50px rgba(200, 150, 255, 0.95);
+    box-shadow: 0 14px 40px rgba(150, 170, 255, 0.9);
 }
 
 .galaxy-btn:active {
     transform: scale(0.95);
 }
+
+/* ==========================
+      인풋 박스 (버튼 아래)
+========================== */
+
+.ai-input-wrap {
+    position: absolute;
+    top: 60px;      /* 버튼 아래 */
+    left: 0;        /* 오른쪽 대신 왼쪽 정렬 */
+    display: none;
+    z-index: 10;
+}
+
+.ai-input {
+    width: 320px;
+    padding: 12px 16px;
+    font-size: 14px;
+
+    background: linear-gradient(
+            135deg,
+            rgba(180,150,255,0.32),
+            rgba(150,200,255,0.25)
+    );
+
+    border: 1px solid rgba(150,150,255,0.35);
+    border-radius: 14px;
+    backdrop-filter: blur(6px);
+
+    color: #2c2c3c;
+    transition: 0.25s ease;
+}
+
+.ai-input:focus {
+    border-color: rgba(120, 150, 255, 0.7);
+    box-shadow: 0 0 14px rgba(120, 150, 255, 0.55);
+}
+
+.ai-input::placeholder {
+    color: rgba(30, 45, 150, 0.75);
+}
+
+/* ============================
+      말풍선 (업그레이드 버전)
+============================ */
+.result-box {
+    position: absolute;
+    top: 0;
+    left: calc(100% + 20px);
+
+    width: 400px;
+    padding: 8px 16px;
+
+    background: linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.40),
+            rgba(220, 230, 255, 0.30)
+    );
+    border: 1px solid rgba(150, 160, 255, 0.35);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    border-radius: 16px;
+    min-height: 40px;
+
+    box-shadow: 0 6px 25px rgba(140, 160, 255, 0.35);
+
+    display: none;
+    animation: popUp 0.35s ease-out;
+}
+
+/* 감성 파스텔 말풍선 */
+.result-box {
+    position: absolute;
+    top: -10px;          /* ⬆ 말풍선을 위로 이동 */
+    left: 120%;          /* 버튼 바로 옆 */
+
+    min-width: 240px;
+    max-width: 300px;
+
+    background: linear-gradient(
+            135deg,
+            rgba(220, 210, 255, 0.60),
+            rgba(190, 210, 255, 0.55),
+            rgba(240, 240, 255, 0.55)
+    );
+
+    padding: 18px 22px;
+    border-radius: 20px;
+
+    border: 1px solid rgba(150,150,255,0.3);
+    box-shadow: 0 6px 18px rgba(150, 160, 255, 0.25);
+
+    display: none;
+    animation: fadeIn 0.35s ease forwards;
+
+    backdrop-filter: blur(10px);
+    font-family: 'Pretendard Variable', sans-serif;
+    color: #4a4a77;
+    line-height: 1.6;
+    z-index: 20;
+}
+
+/* 말풍선 꼬리 */
+.result-box::after {
+    content: "";
+    position: absolute;
+    left: -10px;
+    top: 18px;                 /* 꼬리 위치도 살짝 위로 조정 */
+    width: 0;
+    height: 0;
+    border-right: 12px solid rgba(220, 210, 255, 0.60);
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+}
+
+/* 텍스트 */
+.result-title {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: #3f457d;
+}
+
+.result-place {
+    font-size: 16px;
+    font-weight: 800;
+    margin-top: 4px;
+    color: #2e3aa2;
+}
+
+/* 애니메이션 */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
 

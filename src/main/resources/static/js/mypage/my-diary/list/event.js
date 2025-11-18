@@ -1,9 +1,9 @@
-
 document.addEventListener("DOMContentLoaded", async () => {
     let page = 1;
     const size = 8;
     let hasMore = true;
     let checkScroll = true;
+
     const profileWrap = document.querySelector(".profile-wrap");
     const PROFILE_EDIT_URL = "/mypage/modify";
     const DEFAULT_IMG = "/images/crew-station-icon-profile.png";
@@ -48,7 +48,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         const windowHeight = window.innerHeight;
         const documentHeight = document.documentElement.scrollHeight;
 
-        // 스크롤이 맨 아래에 도달했을 때
         if (scrollTop + windowHeight >= documentHeight - 2) {
             if (!checkScroll) return;
 
@@ -58,7 +57,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                 hasMore = newCriteria?.hasMore ?? false;
             }
 
-            // 스크롤 딜레이(중복 요청 방지)
             checkScroll = false;
             setTimeout(() => { checkScroll = true; }, 1100);
         }
@@ -75,5 +73,53 @@ document.addEventListener("DOMContentLoaded", async () => {
         } else {
             hasMore = false;
         }
+    }
+
+    // ============================================================
+    //              ⭐ AI 여행지 추천 기능 추가 ⭐
+    // ============================================================
+
+    const aiButton = document.getElementById("aiButton");
+    const inputWrap = document.getElementById("aiInputWrap");
+    const inputField = document.getElementById("aiInput");
+    const resultBox = document.getElementById("resultBox");
+    const resultPlace = document.getElementById("resultPlace");
+
+    if (aiButton && inputWrap && inputField && resultBox) {
+
+        aiButton.addEventListener("click", () => {
+
+            if (resultBox.style.display === "block") {
+                resultBox.style.display = "none";
+            }
+
+            inputWrap.style.display =
+                inputWrap.style.display === "block" ? "none" : "block";
+
+            if (inputWrap.style.display === "block") {
+                inputField.focus();
+            }
+        });
+
+        inputField.addEventListener("keydown", async (e) => {
+            if (e.key === "Enter") {
+                e.preventDefault();
+
+                const keyword = inputField.value.trim();
+                if (!keyword) return;
+
+                inputWrap.style.display = "none";
+
+                const result = await AiTravelService.recommendDestinations(keyword);
+
+                if (result && result.message) {
+                    resultPlace.innerHTML = result.message
+                        .map(item => `• ${item.city} (${item.country})`)
+                        .join("<br>");
+
+                    resultBox.style.display = "block";
+                }
+            }
+        });
     }
 });
