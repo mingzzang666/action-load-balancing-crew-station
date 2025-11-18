@@ -2,6 +2,7 @@
 const AiTravelService = (() => {
 
     const recommendDestinations = async (keyword) => {
+        console.log(keyword);
         try {
             const response = await fetch(`http://127.0.0.1:8000/api/recommend-destinations`, {
                 method: "POST",
