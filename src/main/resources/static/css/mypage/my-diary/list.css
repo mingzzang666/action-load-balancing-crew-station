@@ -707,3 +707,87 @@ nav {
     display: none;
 }
 
+
+
+/*================================================================================================*/
+/*  AI 추천 컨텐츠  */
+/*================================================================================================*/
+
+/* 전체 버튼 박스 */
+.ai-button-wrapper {
+    position: relative;
+    display: inline-block;
+    margin: 80px;
+}
+
+/* 🌌 오로라 효과 */
+.ai-button-wrapper::before {
+    content: "";
+    position: absolute;
+    top: -90px;
+    left: 50%;
+    width: 330px;
+    height: 330px;
+
+    background: radial-gradient(circle at 50% 50%,
+    rgba(255, 160, 255, 0.55),
+    rgba(160, 200, 255, 0.40),
+    rgba(120, 150, 255, 0.28),
+    rgba(50, 80, 255, 0)
+    );
+
+    filter: blur(75px);
+    transform: translateX(-50%);
+    border-radius: 50%;
+    animation: auroraFlow 18s infinite ease-in-out alternate;
+}
+
+@keyframes auroraFlow {
+    0% { transform: translateX(-50%) scale(1) rotate(0deg); }
+    50% { transform: translateX(-48%) scale(1.25) rotate(25deg); }
+    100% { transform: translateX(-50%) scale(1) rotate(0deg); }
+}
+
+/* 🟪 버튼 본체 (오렌지 제거) */
+.galaxy-btn {
+    position: relative;
+    z-index: 5;
+    padding: 12px 22px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+
+    /* 🔵🔮 몽환적인 쿨톤 그라데이션 */
+    background: linear-gradient(120deg,
+    #fbc2eb,  /* 핑크-보라 */
+    #a18cd1,  /* 라벤더 */
+    #cfd9ff,  /* 은은한 쿨 화이트 */
+    #a1c4fd,  /* 파스텔 블루 */
+    #c2e9fb   /* 아이스 블루 */
+    );
+
+    background-size: 400% 400%;
+    animation: rainbowFlow 10s ease infinite;
+
+    box-shadow: 0 8px 30px rgba(190, 150, 255, 0.7);
+    transition: 0.25s ease;
+}
+
+@keyframes rainbowFlow {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.galaxy-btn:hover {
+    transform: scale(1.12);
+    box-shadow: 0 18px 50px rgba(200, 150, 255, 0.95);
+}
+
+.galaxy-btn:active {
+    transform: scale(0.95);
+}
+
