@@ -772,7 +772,7 @@ nav {
 
 .ai-input-wrap {
     position: absolute;
-    top: 60px;      /* 버튼 아래 */
+    top: 50px;      /* 버튼 아래 */
     left: 0;        /* 오른쪽 대신 왼쪽 정렬 */
     display: none;
     z-index: 10;
