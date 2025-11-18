@@ -4,7 +4,7 @@ const AiTravelService = (() => {
     const recommendDestinations = async (keyword) => {
         console.log(keyword);
         try {
-            const response = await fetch(`http://127.0.0.1:8000/api/recommend-destinations`, {
+            const response = fetch(`http://crewstation.site/api/recommend-destinations`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ message: keyword })
@@ -14,7 +14,7 @@ const AiTravelService = (() => {
 
             return await response.json();
         } catch (error) {
-            console.error("recommendDestinations Error:", error);
+            console.error("recommendDestinations Error: ", error);
             return null;
         }
     };
