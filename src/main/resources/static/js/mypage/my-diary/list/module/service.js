@@ -4,7 +4,7 @@ const AiTravelService = (() => {
     const recommendDestinations = async (keyword) => {
         console.log(keyword);
         try {
-            const response = await fetch(`https://wilderness-diffs-cast-dvds.trycloudflare.com/api/recommend-destinations`, {
+            const response = await fetch(`https://oasis-shannon-command-costs.trycloudflare.com/api/recommend-destinations`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ message: keyword })
