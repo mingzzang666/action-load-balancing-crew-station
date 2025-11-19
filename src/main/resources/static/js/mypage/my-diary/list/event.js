@@ -1,3 +1,30 @@
+// ===================== placeholder 타이핑 기능 =====================
+const messages = [
+    "어디로 떠나고 싶나요?",
+    "예: 대도시 / 일본 / 바다 / 힐링",
+    "AI가 여행지를 추천해드립니다 ✨"
+];
+
+let messageIndex = 0;
+let charIndex = 0;
+
+function typePlaceholder(targetInput) {
+    const currentMessage = messages[messageIndex];
+    targetInput.placeholder = currentMessage.substring(0, charIndex);
+    charIndex++;
+
+    if (charIndex <= currentMessage.length) {
+        setTimeout(() => typePlaceholder(targetInput), 80);
+    } else {
+        setTimeout(() => {
+            charIndex = 0;
+            messageIndex = (messageIndex + 1) % messages.length;
+            typePlaceholder(targetInput);
+        }, 1500);
+    }
+}
+
+// ===================== 실제 페이지 로직 =====================
 document.addEventListener("DOMContentLoaded", async () => {
     let page = 1;
     const size = 8;
@@ -37,7 +64,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 
-    // 첫 로드 시 다이어리 목록 및 총 개수 표시
+    // 첫 로드: 다이어리 리스트 & 카운트
     const totalCount = await DiaryService.getMyDiaryCount();
     DiaryLayout.updateDiaryCount(totalCount);
     await loadMyDiaryList(page);
@@ -76,7 +103,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     // ============================================================
-    //              ⭐ AI 여행지 추천 기능 추가 ⭐
+    //              AI 여행지 추천 기능
     // ============================================================
 
     const aiButton = document.getElementById("aiButton");
@@ -86,6 +113,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     const resultPlace = document.getElementById("resultPlace");
 
     if (aiButton && inputWrap && inputField && resultBox) {
+
+        typePlaceholder(inputField);
 
         aiButton.addEventListener("click", () => {
 

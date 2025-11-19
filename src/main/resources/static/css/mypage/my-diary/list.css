@@ -16,8 +16,8 @@ body, html {
 }
 
 blockquote, body, code, dd, div, dl, dt, fieldset,
- form, h1, h2, h3, h4, h5, h6, input, legend, li,
- ol, p, pre, td, textarea, th, ul {
+form, h1, h2, h3, h4, h5, h6, input, legend, li,
+ol, p, pre, td, textarea, th, ul {
     margin: 0;
     padding: 0;
 }
@@ -51,9 +51,9 @@ a {
     format("truetype"),
     url(https://assets.ohou.se/design-system/3ba7913eab100858.svg#OhouseIcon)
     format("svg");}
-    html{
-        font-family:'Pretendard Variable',sans-serif;
-        letter-spacing:-0.3px;-webkit-font-smoothing:antialiased;}
+html{
+    font-family:'Pretendard Variable',sans-serif;
+    letter-spacing:-0.3px;-webkit-font-smoothing:antialiased;}
 
 
 /* 네비 */
@@ -720,7 +720,8 @@ nav {
     width: fit-content;
     margin-left: 20px;
     margin-right: 0;      /* 오른쪽 여백 */
-    margin-top: 60px;         /* 위 여백 */
+    margin-top: 20px;         /* 위 여백 */
+    margin-bottom: 20px;
 }
 
 /* ==========================
@@ -807,99 +808,101 @@ nav {
     color: rgba(30, 45, 150, 0.75);
 }
 
-/* ============================
-      말풍선 (업그레이드 버전)
-============================ */
+/* ================================
+        ✦ 귀여운 파스텔 말풍선
+================================ */
 .result-box {
     position: absolute;
-    top: 0;
-    left: calc(100% + 20px);
+    top: -50px;
+    left: 120%;
 
-    width: 400px;
-    padding: 8px 16px;
+    min-width: 260px;
+    max-width: 330px;
 
+    padding: 20px 24px;
+
+    /* 부드러운 파스텔 그라데이션 */
     background: linear-gradient(
             135deg,
-            rgba(255, 255, 255, 0.40),
-            rgba(220, 230, 255, 0.30)
-    );
-    border: 1px solid rgba(150, 160, 255, 0.35);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-
-    border-radius: 16px;
-    min-height: 40px;
-
-    box-shadow: 0 6px 25px rgba(140, 160, 255, 0.35);
-
-    display: none;
-    animation: popUp 0.35s ease-out;
-}
-
-/* 감성 파스텔 말풍선 */
-.result-box {
-    position: absolute;
-    top: -10px;          /* ⬆ 말풍선을 위로 이동 */
-    left: 120%;          /* 버튼 바로 옆 */
-
-    min-width: 240px;
-    max-width: 300px;
-
-    background: linear-gradient(
-            135deg,
-            rgba(220, 210, 255, 0.60),
-            rgba(190, 210, 255, 0.55),
-            rgba(240, 240, 255, 0.55)
+            rgba(245, 230, 255, 0.85),
+            rgba(225, 235, 255, 0.85),
+            rgba(240, 245, 255, 0.95)
     );
 
-    padding: 18px 22px;
-    border-radius: 20px;
+    border-radius: 22px;
+    border: none;
 
-    border: 1px solid rgba(150,150,255,0.3);
-    box-shadow: 0 6px 18px rgba(150, 160, 255, 0.25);
-
-    display: none;
-    animation: fadeIn 0.35s ease forwards;
+    box-shadow:
+            0 8px 25px rgba(150, 160, 255, 0.28),
+            0 0 14px rgba(255, 255, 255, 0.6) inset;
 
     backdrop-filter: blur(10px);
-    font-family: 'Pretendard Variable', sans-serif;
-    color: #4a4a77;
+    -webkit-backdrop-filter: blur(10px);
+
+    font-family: "Pretendard Variable", sans-serif;
+    color: #4d4d7c;
     line-height: 1.6;
-    z-index: 20;
+
+    display: none;
+    animation: resultPop 0.35s ease forwards;
+
+    position: absolute;
+    z-index: 30;
+
+    /* 부드러운 테두리 광택 */
+    border-image: linear-gradient(120deg, #e8d9ff, #d8e4ff, #eef0ff) 1;
 }
 
-/* 말풍선 꼬리 */
+/* ✦ 말풍선 꼬리 (귀엽고 통통하게) */
 .result-box::after {
     content: "";
     position: absolute;
-    left: -10px;
-    top: 18px;                 /* 꼬리 위치도 살짝 위로 조정 */
+
+    left: -15px;
+    top: calc(50% - 8px);
+    transform: translateY(-50%);
+
     width: 0;
     height: 0;
-    border-right: 12px solid rgba(220, 210, 255, 0.60);
-    border-top: 9px solid transparent;
-    border-bottom: 9px solid transparent;
+
+    border-right: 15px solid rgba(245, 230, 255, 0.85);
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+
+    filter: drop-shadow(-3px 2px 3px rgba(180, 180, 255, 0.25));
 }
 
-/* 텍스트 */
+/* ✦ 제목 */
 .result-title {
     font-size: 14px;
-    font-weight: 700;
-    margin-bottom: 4px;
-    color: #3f457d;
+    font-weight: 800;
+    margin-bottom: 8px;
+    color: #6a62b0;
+    letter-spacing: -0.2px;
 }
 
+/* ✦ 추천 여행지 텍스트 */
 .result-place {
     font-size: 16px;
-    font-weight: 800;
+    font-weight: 900;
+    color: #4038a0;
     margin-top: 4px;
-    color: #2e3aa2;
+    letter-spacing: -0.3px;
 }
 
-/* 애니메이션 */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(6px); }
-    to   { opacity: 1; transform: translateY(0); }
+/* ✦ 부드러운 팝 애니메이션 */
+@keyframes resultPop {
+    0% {
+        opacity: 0;
+        transform: translateY(8px) scale(0.92);
+    }
+    60% {
+        opacity: 1;
+        transform: translateY(0) scale(1.03);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 
