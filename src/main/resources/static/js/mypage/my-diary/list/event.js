@@ -137,16 +137,27 @@ document.addEventListener("DOMContentLoaded", async () => {
                 const keyword = inputField.value.trim();
                 if (!keyword) return;
 
+                // 입력창 닫기
                 inputWrap.style.display = "none";
 
-                const result = await AiTravelService.recommendDestinations(keyword);
+                // 로딩 표시
+                document.getElementById("loading").style.display = "block";
 
-                if (result && result.results) {
-                    resultPlace.innerHTML = result.results
-                        .map(item => `• ${item.city} (${item.country})`)
-                        .join("<br>");
+                try {
+                    const result = await AiTravelService.recommendDestinations(keyword);
 
-                    resultBox.style.display = "block";
+                    if (result && result.results) {
+                        resultPlace.innerHTML = result.results
+                            .map(item => `• ${item.city} (${item.country})`)
+                            .join("<br>");
+
+                        resultBox.style.display = "block";
+                    }
+                } catch (err) {
+                    console.error(err);
+                } finally {
+                    // 로딩 숨기기
+                    document.getElementById("loading").style.display = "none";
                 }
             }
         });
