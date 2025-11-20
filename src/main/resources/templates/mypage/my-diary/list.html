@@ -11,6 +11,10 @@
     <link rel="stylesheet" href="/css/fixed/web/footer.css">
 </head>
 <body>
+<!-- 로딩 -->
+<div id="loading" style="display:none;">
+    <div class="spinner"></div>
+</div>
 <header th:replace="~{fixed/web/header :: header}"></header>
 <div class="all">
     <div class="myhome-nav">
@@ -96,11 +100,6 @@
             </div>
         </div>
     </main>
-</div>
-
-<!-- 로딩 -->
-<div id="loading" style="display:none;">
-    <div class="spinner"></div>
 </div>
 
 <div class="toast hide" style="display: none;">
