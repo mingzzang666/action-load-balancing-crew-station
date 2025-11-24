@@ -11,3 +11,4 @@ values (5);
 
 select *
 from tbl_banner;
+
